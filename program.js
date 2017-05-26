@@ -1,12 +1,16 @@
+// make it modular
 var fs = require('fs');
 var path = require('path');
- module.exports = function sort(dirname, file, callback) {
+var mod = require('./module');
 
-  // fs.readdir(process.argv[2], function(err, list){
-  //   list.forEach(function(ele){
-  //     if(path.extname(ele) === '.' +  process.argv[3]) {
-  //       console.log(ele);
-  //     }
-  //   });
-  // });
+var dirname = process.argv[2];
+var file = process.argv[3];
+var callback = function (err, list) {
+  if(err){
+    console.log(err);
+  }
+  list.map(function(ele){
+    console.log(ele);
+  })
 }
+mod(dirname, file, callback);
